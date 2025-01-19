@@ -1,0 +1,86 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #292523;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 300;
+}
+
+.title {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    font-size: 200%;
+    color: #C0453D;
+    padding: 5%;
+}
+
+#subtitle {
+    color: #EF9052;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+.about-me {
+    background-color: #708B97;
+    width: 75%;
+    margin: auto;
+    text-align: center;
+    padding: 5%;
+    color: #446C88;
+    font-size: 110%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 20px;
+    margin-bottom: 80px;
+}
+
+#about-me-body {
+    color: #292523;
+    font-size: 130%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.kyoto {
+    background-image: url(./images/kyoto.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align:center;
+    margin: auto;
+    padding: 10%;
+    margin-bottom: 80px;
+}
+
+.japan {
+    padding:20px;
+    background-color: rgba(239, 144, 82, 0.7);;
+    border-radius: 20px;
+    color:#292523;
+    font-size: 120%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#japan-body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.memory-text {
+    margin-left:80px;
+    margin-right:10px;
+    padding: 5%;
+    width:50%;
+    float: left;
+    background-color: #C0453D;
+    border-radius: 20px;
+    font-size: 120%;
+    color: #4F1011;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#memory-body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.memory-image {
+    width: 30%;
+    float: right;
+    
+}
