@@ -1,0 +1,17 @@
+console.log('Three of my favorite websites:');
+console.log('- https://www.youtube.com/');
+console.log('- https://colorfle.com/');
+console.log('- https://stardewvalleywiki.com/Stardew_Valley_Wiki');
+console.log('');
+console.log('Three of my favorite games:');
+console.log('- Stardew Valley');
+console.log('- Flamecraft');
+console.log('- My Singing Monsters');
+console.log('');
+console.log('Three of my favorite artists:');
+console.log('-Aremisia Gentileschi, who was a skilled Italian painter amongst the likes of Cravaggio, but was not recognized for her work until recently.');
+console.log('- Barna (@sakrafka on instagram) is a queer artist who lives in Hungary who uses her art to make a living and express herself.');
+console.log('- Kendall Hobbs is one of my peers in the printmaking program who has inspired me.');
+console.log('');
+var game = prompt('What is your favorite game?');
+console.log(game + ' is a fun game!');
