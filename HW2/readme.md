@@ -1,6 +1,6 @@
 I have never used ChatGPT to assist with html or coding, and I was surprised with its work when I gave it the following prompt:
 
-_Can you give me insturctions on how to write a program using javascript and html to complete the following assignment: [pasted in the homework assignemnt]_
+_Can you give me insturctions on how to write a program using javascript and html to complete the following assignment: [pasted in the homework assignment]_
 
 It gave me detailed step by step insturctions and included comments in the code to explain what each part was doing. The AI included more information in the head than I did. It did not add an image, but it did include a title complete with a font choice. It also used the keyword 'let' where I used 'var'. Coincidentally, we chose the same bacgkround color (it is one of the default ones in VSCode).
 
