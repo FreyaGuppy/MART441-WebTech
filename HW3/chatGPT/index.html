@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Your Adventure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="story-container">
+    <h1>Choose Your Own Adventure!</h1>
+    <p id="story-text">You find yourself in a dark forest. What do you do?</p>
+
+    <div id="choices">
+      <button onclick="makeChoice('explore')">Explore the forest</button>
+      <button onclick="makeChoice('wait')">Wait for help</button>
+      <button onclick="makeChoice('climb')">Climb a tree</button>
+    </div>
+
+    <div id="image-container">
+      <img id="story-image" src="" alt="" style="width: 100%; max-width: 300px;">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
