@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <label id="lblName">Enter your name:</label><br>
+        <input id="txtName" type="text"><br>
+        <button id="btnSubmit" onclick="getName('Nice to meet you');">Submit</button><br>
+        <p id=nameOutput></p>
+
+         <script>
+            function getName(greeting)
+            {
+                var currentName = document.getElementById("txtName").value;
+                document.getElementById("nameOutput").innerHTML = greeting + ", " + currentName;
+                
+            }
+            
+        </script>
+    </body>
+</html>

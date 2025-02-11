@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>Choose your own adventure v2</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div id="image"><img src="./images/bug.jpg" width="400"></div>
+    <br>
+    <div id="title"><h1>The Brave Bug's Search</h1></div>
+    <div id="question">
+        It is the dead of winter and you are a stink bug who has somehow managed to survive this far into the cold season. You can feel your time running out and realize that you must find shelter to survive until spring. You enter the nearest house which happens to be multiple stories tall. You can sense that it would be safest to go to the top floor because heat rises, but it will be quite the trek. Will you go upstairs, or stay and look for the best option down here?
+    </div>
+     
+    <br>
+    <input type="text" size="30" id="choice" placeholder="Enter 'up' or 'stay'">
+    <button id="btnSubmit" onclick="getChoice1();">Click to continue</button>
+
+    <input type="text" size="30" id="choice2" placeholder="Enter 'stop' or 'continue'" style="display:none">
+    <button id="btnSubmit2" onclick="getChoice2();"  style="display:none">Click to continue</button>
+
+    <input type="text" size="30" id="choice3" placeholder="Enter 'near' or 'far'"  style="display:none">
+    <button id="btnSubmit3" onclick="getChoice3();" style="display:none">Click to continue</button>
+
+    <input type="text" size="30" id="choice4" placeholder="Enter 'shoe' or 'closet'"  style="display:none">
+    <button id="btnSubmit4" onclick="getChoice4();" style="display:none">Click to continue</button>
+
+    <input type="text" size="30" id="choice5" placeholder="Enter 'wall' or 'door'"  style="display:none">
+    <button id="btnSubmit5" onclick="getChoice5();" style="display:none">Click to continue</button>
+
+</body>
+
+</html>
