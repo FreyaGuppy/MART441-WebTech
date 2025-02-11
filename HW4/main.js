@@ -1,3 +1,11 @@
+const invalidResponse = ['You killed the bug :(<br><br>(Check for correct spelling and capitalization and try again.)', 'Invalid input, check for correct spelling and capitalization and try again.', 'You have become the bug in real life<br><br>(Check for correct spelling and capitalization and try again.)', 'The bug was kissed and turned into a prince!<br><br>(Check for correct spelling and capitalization and try again.)'];
+//I used ChatGPT to help with this part. I want it to display one of four random messages when the user inputs an invalid response. The function below does return a random item from the array above (when I checked with console.log), but I cannot figure out how to make it actually display when the user inputs an invalid response. I tried a few different things.
+function getRandomInvalidResponse(arr){
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+}
+//console.log(getRandomInvalidResponse(invalidResponse));
+
 function getChoice1()
         {
             var myChoice = document.getElementById("choice").value;
@@ -26,8 +34,30 @@ function getChoice1()
             else
             {
                 myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
+                //getElementById('question').textContent = getRandomInvalidResponse(invalidResponse);
+                //myQuestion.innerHTML = document.write(getRandomInvalidResponse(invalidResponse));
             }
         
+        }
+        function getChoice4()
+        {
+            var answer = document.getElementById("choice4").value;
+            var myQuestion = document.getElementById("question");
+            if(answer === "shoe")
+            {
+                document.getElementById("choice4").style.display="none";
+                document.getElementById("btnSubmit4").style.display="none";
+
+                myQuestion.innerHTML = "You decided to hide away in a very warm looking boot. For a time, this boot keeps you cozy and safe, but you failed to take into account the primary use of a boot. Later that evening, one of the human resitents inserts their foot into your new home and before you have time to react, you are squashed. They wouldn't have done this on purpose, but they didn't think to look for you. Your signature stink now permeates their sock and shoe and will remind them of you for weeks to come.";
+            }
+            else if(answer === "closet")
+            {
+                myQuestion.innerHTML = "The closet seems promising, you find your way in only to discover it is nostly empty except for a vacuum and a some cleaning products. There is nothing to keep you warm here. You soon die of the cold.";
+            }
+            else
+            {
+                myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
+            }
         }
 
         function getChoice2()
@@ -48,7 +78,11 @@ function getChoice1()
             }
             else if(answer === "stop")
             {
-                myQuestion.innerHTML = "Please remember we are all in this together.";
+                myQuestion.innerHTML = "You decide that this is far enough. You walk to a thoroughtly sun-baked spot in the floor and rest. Though this place is comfortable and warm, there is nothing to sustain you. After three days, you grow hungry, and die.";
+            }
+            else
+            {
+                myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
             }
         }
 
@@ -58,34 +92,24 @@ function getChoice1()
             var myQuestion = document.getElementById("question");
             if(answer === "near")
             {
-                /*document.getElementById("mainImage").src = "together.jpg"
-
                 document.getElementById("choice3").style.display="none";
                 document.getElementById("btnSubmit3").style.display="none";
-                
-                document.getElementById("choice4").style.display="block";
-                document.getElementById("btnSubmit4").style.display="block"; */
 
                 myQuestion.innerHTML = "You've come far enough, this closer room seems as good as any, and you're plum tuckered. You walk under the crack in the door and find a dark corner to rest for the night.<br><br>You wake up to the sun hitting your elytra. You look around, this room is sunny and full of plants. The warmth and green leaves fill you with memories of summer. This is it, you think, this is right.<br><br>You spend the rest of winter living in one of the plants, warm and safe.";
             }
             else if(answer === "far")
             {
-                myQuestion.innerHTML = "Please remember we are all in this together.";
-            }
-        }
+                document.getElementById("choice3").style.display="none";
+                document.getElementById("btnSubmit3").style.display="none";
+                
+                document.getElementById("choice5").style.display="block";
+                document.getElementById("btnSubmit5").style.display="block";
 
-        function getChoice4()
-        {
-            var answer = document.getElementById("choice4").value;
-            var myQuestion = document.getElementById("question");
-            if(answer === "shoe")
-            {
-                document.getElementById("mainImage").src = "together.jpg"
-                myQuestion.innerHTML = "Thank you for your kindness!";
+                myQuestion.innerHTML = "You've come this far, you decide that the best things in life don't come easy so you head towards the far door. Plus, this door is already cracked open as if you welcome you in.<br><br>You enter and, to your horror, come face to face with a large furry beast with pointy ears and sharp claws. The beast locks its terrifying eyes onto you immediately. You can scan your surroundings and see that you can either run up the wall to try to get out of its reach, or you can run back to where you came from to the the crack under the door where it couldn't fit. Where do you go?"
             }
-            else if(answer === "closet")
+            else
             {
-                myQuestion.innerHTML = "Please remember we are all in this together.";
+                myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
             }
         }
 
@@ -95,11 +119,16 @@ function getChoice1()
             var myQuestion = document.getElementById("question");
             if(answer === "wall")
             {
-                document.getElementById("mainImage").src = "together.jpg"
-                myQuestion.innerHTML = "Thank you for your kindness!";
+                myQuestion.innerHTML = "You try to scale the wall, but the cat has impressive reach. You cannot outrun your foe. With one swift motion, it swipes you off the wall and into its caverous maw.";
             }
             else if(answer === "door")
             {
-                myQuestion.innerHTML = "Please remember we are all in this together.";
+                myQuestion.innerHTML = "You quickly backtrack and scurry under the door. The cat however is quite skilled in this game of stick-your-paw-under-the-door and swipes you back into the room. Before you can try anything else, you are pawed to death.";
+            }
+            else
+            {
+                myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
             }
         }
+      
+        

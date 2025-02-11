@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Own Adventure</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #222; color: white; }
+        #game-container { max-width: 600px; margin: auto; padding: 20px; background: #333; border-radius: 10px; }
+        img { width: 100%; max-height: 300px; border-radius: 10px; }
+        input, button { margin-top: 10px; padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h2>Choose Your Own Adventure</h2>
+        <img id="scene-image" src="" alt="Scene Image">
+        <p id="story">Welcome to your adventure! Type your choice below:</p>
+        <input type="text" id="user-input" placeholder="Type your choice...">
+        <button onclick="makeChoice()">Submit</button>
+        <button onclick="restartGame()">Restart</button>
+    </div>
+
+    <script>
+        let scene = 0;
+
+        function getSceneText(sceneNum) {
+            const scenes = {
+                0: "You're in a dark forest. Do you go 'left' or 'right'?",
+                1: "You found a river. Do you 'swim' across or 'follow' it?",
+                2: "A wild animal appears! Do you 'fight' or 'run'?",
+                3: "You discovered a hidden treasure! Do you 'take' it or 'leave' it?",
+                4: "A wizard appears and offers you power. Do you say 'yes' or 'no'?",
+                5: "You won the game! Play again? Type 'restart'."
+            };
+            return scenes[sceneNum] || "The adventure ends here. Type 'restart' to play again.";
+        }
+
+        function updateSceneImage(sceneNum) {
+            const images = {
+                0: "forest.jpg", 
+                1: "river.jpg", 
+                2: "animal.jpg", 
+                3: "treasure.jpg", 
+                4: "wizard.jpg", 
+                5: "win.jpg"
+            };
+            document.getElementById("scene-image").src = images[sceneNum] || "end.jpg";
+        }
+
+        function makeChoice() {
+            let choice = document.getElementById("user-input").value.toLowerCase();
+            document.getElementById("user-input").value = "";
+
+            if (scene === 0) {
+                if (choice === "left") scene = 1;
+                else if (choice === "right") scene = 2;
+            } else if (scene === 1) {
+                if (choice === "swim") scene = 3;
+                else if (choice === "follow") scene = 4;
+            } else if (scene === 2) {
+                if (choice === "fight") scene = 4;
+                else if (choice === "run") scene = 3;
+            } else if (scene === 3 || scene === 4) {
+                if (choice === "take" || choice === "yes") scene = 5;
+                else if (choice === "leave" || choice === "no") scene = 0;
+            } else if (scene === 5 && choice === "restart") {
+                restartGame();
+                return;
+            }
+            
+            document.getElementById("story").textContent = getSceneText(scene);
+            updateSceneImage(scene);
+        }
+
+        function restartGame() {
+            scene = 0;
+            document.getElementById("story").textContent = getSceneText(scene);
+            updateSceneImage(scene);
+        }
+
+        restartGame();
+    </script>
+</body>
+</html>

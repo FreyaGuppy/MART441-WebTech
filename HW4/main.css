@@ -1,7 +1,12 @@
 body {
-    background-color: C6E2E9;
-
+    background-color: #C6E2E9;
+    color: #1E2019;
 }
 div {
     width: 50%
+}
+button {
+    background-color: #9B7E46;
+    border-radius: 10px;
+    color:#C6E2E9;
 }
