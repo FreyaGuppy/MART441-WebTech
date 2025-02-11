@@ -6,12 +6,19 @@ function getRandomInvalidResponse(arr){
 }
 //console.log(getRandomInvalidResponse(invalidResponse));
 
+function setBackgroundColor(color){
+    document.body.style.backgroundColor = color;
+}
 function getChoice1()
         {
             var myChoice = document.getElementById("choice").value;
             var myQuestion = document.getElementById("question");
             if(myChoice === "up")
             {
+                //document.body.style.backgroundColor = DAB894;
+
+                document.getElementById("image").innerHTML = "<img src='./images/stairs.jpg' width='400'>";
+                
                 document.getElementById("choice").style.display="none";
                 document.getElementById("btnSubmit").style.display="none";
                 
@@ -19,9 +26,12 @@ function getChoice1()
                 document.getElementById("btnSubmit2").style.display="block";
                 
                 myQuestion.innerHTML = "You decide the only way through is up, so you begin your trek. The stairs are arduous, but they are carpeted. With the grip this allows you, you only fall once along the way, sustaining minimal brusing. It takes you all morning, but you eventually reach the summit. You are greeted by a sunny, southfacing window at the top of the stairs. A welcome sight! You allow yourself to daydream about resting in this beam of warmth. But you sense that there is still yet one more floor to ascend. Tired from the first leg of your journey, it is tempting to stop here. Do you stop, or continue up?";
+                setBackgroundColor('#DAB894');
             }
             else if(myChoice === "stay")
             {
+                document.getElementById("image").innerHTML = "<img src='./images/mudroom.png' width='400'>";
+                
                 document.getElementById("choice").style.display="none";
                 document.getElementById("btnSubmit").style.display="none";
                 
@@ -29,7 +39,7 @@ function getChoice1()
                 document.getElementById("btnSubmit4").style.display="block";
                 
                 myQuestion.innerHTML = "You decide that it is far too much work to go upstairs. In the foyer you see a shoe rack full of shoes and a shut closet. One of these places might be a good place to keep warm. Some shoes are quite cozy, but there could be blankets in the closet. Which do you choose?";
-
+                setBackgroundColor('#DAB894');
             }
             else
             {
@@ -49,10 +59,12 @@ function getChoice1()
                 document.getElementById("btnSubmit4").style.display="none";
 
                 myQuestion.innerHTML = "You decided to hide away in a very warm looking boot. For a time, this boot keeps you cozy and safe, but you failed to take into account the primary use of a boot. Later that evening, one of the human resitents inserts their foot into your new home and before you have time to react, you are squashed. They wouldn't have done this on purpose, but they didn't think to look for you. Your signature stink now permeates their sock and shoe and will remind them of you for weeks to come.";
+                setBackgroundColor('#DAB894');
             }
             else if(answer === "closet")
             {
                 myQuestion.innerHTML = "The closet seems promising, you find your way in only to discover it is nostly empty except for a vacuum and a some cleaning products. There is nothing to keep you warm here. You soon die of the cold.";
+                setBackgroundColor('#DAB894');
             }
             else
             {
@@ -66,7 +78,7 @@ function getChoice1()
             var myQuestion = document.getElementById("question");
             if(answer === "continue")
             {
-                //document.getElementById("mainImage").src = "grateful.jpg"
+                document.getElementById("image").innerHTML = "<img src='./images/hall.jpeg' width='400'>";
 
                 document.getElementById("choice2").style.display="none";
                 document.getElementById("btnSubmit2").style.display="none";
@@ -78,6 +90,8 @@ function getChoice1()
             }
             else if(answer === "stop")
             {
+                document.getElementById("image").innerHTML = "<img src='./images/sunWindow.jpg' width='400'>";
+                
                 myQuestion.innerHTML = "You decide that this is far enough. You walk to a thoroughtly sun-baked spot in the floor and rest. Though this place is comfortable and warm, there is nothing to sustain you. After three days, you grow hungry, and die.";
             }
             else
@@ -92,6 +106,8 @@ function getChoice1()
             var myQuestion = document.getElementById("question");
             if(answer === "near")
             {
+                document.getElementById("image").innerHTML = "<img src='./images/room.webp' width='400'>";
+                
                 document.getElementById("choice3").style.display="none";
                 document.getElementById("btnSubmit3").style.display="none";
 
@@ -119,6 +135,8 @@ function getChoice1()
             var myQuestion = document.getElementById("question");
             if(answer === "wall")
             {
+                document.getElementById("image").innerHTML = "<img src='./images/cat.jpg' width='400'>";
+                
                 myQuestion.innerHTML = "You try to scale the wall, but the cat has impressive reach. You cannot outrun your foe. With one swift motion, it swipes you off the wall and into its caverous maw.";
             }
             else if(answer === "door")
