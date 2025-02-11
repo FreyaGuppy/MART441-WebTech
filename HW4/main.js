@@ -87,6 +87,10 @@ function getChoice1()
                 document.getElementById("btnSubmit3").style.display="block";
 
                 myQuestion.innerHTML = "The temptation does not sway you, and you continue on. You walk through the second story and find the next set of stairs. This climb takes you even longer than the first due to your fatigue. You have to rest halfway up before continuing, but eventually, you make it. It is night now and you have been turned around, you have no idea where to find another south facing window. There is a dark, twisting hallway with two closed doors, one of these must be your ideal winter home. Do you go to the near door, or the far one?";
+                
+                setBackgroundColor('#394032');
+                document.body.style.color = '#DAB894';
+
             }
             else if(answer === "stop")
             {
@@ -112,6 +116,9 @@ function getChoice1()
                 document.getElementById("btnSubmit3").style.display="none";
 
                 myQuestion.innerHTML = "You've come far enough, this closer room seems as good as any, and you're plum tuckered. You walk under the crack in the door and find a dark corner to rest for the night.<br><br>You wake up to the sun hitting your elytra. You look around, this room is sunny and full of plants. The warmth and green leaves fill you with memories of summer. This is it, you think, this is right.<br><br>You spend the rest of winter living in one of the plants, warm and safe.";
+
+                setBackgroundColor('#cef5b3');
+                document.body.style.color = '#394032';
             }
             else if(answer === "far")
             {
