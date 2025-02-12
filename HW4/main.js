@@ -1,4 +1,5 @@
 const invalidResponse = ['You killed the bug :(<br><br>(Check for correct spelling and capitalization and try again.)', 'Invalid input, check for correct spelling and capitalization and try again.', 'You have become the bug in real life<br><br>(Check for correct spelling and capitalization and try again.)', 'The bug was kissed and turned into a prince!<br><br>(Check for correct spelling and capitalization and try again.)'];
+
 //I used ChatGPT to help with this part. I want it to display one of four random messages when the user inputs an invalid response. The function below does return a random item from the array above (when I checked with console.log), but I cannot figure out how to make it actually display when the user inputs an invalid response. I tried a few different things.
 function getRandomInvalidResponse(arr){
     const randomIndex = Math.floor(Math.random() * arr.length);
