@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>
+            Query String
+        </title>
+        <script>
+            function getInformation()
+            {
+                var information = new URLSearchParams(location.search);
+                document.getElementById("message").innerHTML = information.get("info"); 
+            }
+        </script>
+    </head>
+    <body onload="getInformation();">
+        <div id="message"></div>
+    </body>
+</html>
+
+//reloading doesn't undo the entered information, you can navigate back and then reload. since they are two separate pages

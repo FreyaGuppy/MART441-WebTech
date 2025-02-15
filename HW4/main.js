@@ -1,6 +1,5 @@
 const invalidResponse = ['You killed the bug :(<br><br>(Check for correct spelling and capitalization and try again.)', 'Invalid input, check for correct spelling and capitalization and try again.', 'You have become the bug in real life<br><br>(Check for correct spelling and capitalization and try again.)', 'The bug was kissed and turned into a prince!<br><br>(Check for correct spelling and capitalization and try again.)'];
 
-//I used ChatGPT to help with this part. I want it to display one of four random messages when the user inputs an invalid response. The function below does return a random item from the array above (when I checked with console.log), but I cannot figure out how to make it actually display when the user inputs an invalid response. I tried a few different things.
 function getRandomInvalidResponse(arr){
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
@@ -10,14 +9,21 @@ function getRandomInvalidResponse(arr){
 function setBackgroundColor(color){
     document.body.style.backgroundColor = color;
 }
+function bugLoop()
+            {
+                for(var i = 0; i < 50; i++)
+                {
+                    document.write("Bug<br>");
+                }
+            }
+
+
 function getChoice1()
         {
             var myChoice = document.getElementById("choice").value;
             var myQuestion = document.getElementById("question");
             if(myChoice === "up")
             {
-                //document.body.style.backgroundColor = DAB894;
-
                 document.getElementById("image").innerHTML = "<img src='./images/stairs.jpg' width='400'>";
                 
                 document.getElementById("choice").style.display="none";
@@ -27,7 +33,9 @@ function getChoice1()
                 document.getElementById("btnSubmit2").style.display="block";
                 
                 myQuestion.innerHTML = "You decide the only way through is up, so you begin your trek. The stairs are arduous, but they are carpeted. With the grip this allows you, you only fall once along the way, sustaining minimal brusing. It takes you all morning, but you eventually reach the summit. You are greeted by a sunny, southfacing window at the top of the stairs. A welcome sight! You allow yourself to daydream about resting in this beam of warmth. But you sense that there is still yet one more floor to ascend. Tired from the first leg of your journey, it is tempting to stop here. Do you stop, or continue up?";
+                
                 setBackgroundColor('#DAB894');
+
             }
             else if(myChoice === "stay")
             {
@@ -42,9 +50,14 @@ function getChoice1()
                 myQuestion.innerHTML = "You decide that it is far too much work to go upstairs. In the foyer you see a shoe rack full of shoes and a shut closet. One of these places might be a good place to keep warm. Some shoes are quite cozy, but there could be blankets in the closet. Which do you choose?";
                 setBackgroundColor('#DAB894');
             }
+            else if(myChoice === "bug" || "Bug"){
+                myQuestion.innerHTML = bugLoop();
+            }
             else
             {
-                myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
+                myQuestion.innerHTML = getRandomInvalidResponse(invalidResponse);
+                //myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
+                
                 //getElementById('question').textContent = getRandomInvalidResponse(invalidResponse);
                 //myQuestion.innerHTML = document.write(getRandomInvalidResponse(invalidResponse));
             }
@@ -69,7 +82,7 @@ function getChoice1()
             }
             else
             {
-                myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
+                myQuestion.innerHTML = getRandomInvalidResponse(invalidResponse);
             }
         }
 
@@ -101,7 +114,7 @@ function getChoice1()
             }
             else
             {
-                myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
+                myQuestion.innerHTML = getRandomInvalidResponse(invalidResponse);            
             }
         }
 
@@ -133,7 +146,7 @@ function getChoice1()
             }
             else
             {
-                myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
+                myQuestion.innerHTML = getRandomInvalidResponse(invalidResponse);
             }
         }
 
@@ -153,8 +166,12 @@ function getChoice1()
             }
             else
             {
-                myQuestion.innerHTML = "Invalid answer. Check for correct spelling and capitalization.";
+                myQuestion.innerHTML = getRandomInvalidResponse(invalidResponse);            
             }
+        }
+
+        function restartGame(){
+            window.location = window.location.href;
         }
       
         
