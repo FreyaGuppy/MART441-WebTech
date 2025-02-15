@@ -2,6 +2,8 @@ Project Reflection:
 
 I had less time this week to work on this homework than previous weeks, so I haven't gotten it to a place that I am satisfied with yet. I am currently having trouble figuring out a way to include loops that will make sense for this project. The only way I've seen a loop be used so far is to display a list. I can't think of a way to use that in this project. I have a function that returns a value and takes a parameter, but I can't get it to work quite how I want (more details in main.js). I also could not figure out how to restart the story. 
 
+*Update:* I was able to work on this some more and I am pretty satisfied where it is now. It should fulfill all of the requirements of the assignment.
+
 
 ChatGPT Reflection:
 
