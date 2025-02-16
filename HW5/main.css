@@ -12,12 +12,21 @@ h1 {
     color:rgb(236, 157, 72);
 }
 
+/*img {
+    display: block;
+    margin: auto;
+}*/
+
 .divTable{
 	display: table;
 	width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .divTableRow {
 	display: table-row;
+    height: 100px;
 }
 /*.divTableHeading {
 	background-color: #a03b3b;
