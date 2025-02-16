@@ -12,14 +12,9 @@ h1 {
     color:rgb(236, 157, 72);
 }
 
-/*img {
-    display: block;
-    margin: auto;
-}*/
-
 .divTable{
 	display: table;
-	width: 100%;
+	/*width: 100%;*/
     display: flex;
     justify-content: center;
     align-items: center;
