@@ -14,26 +14,27 @@ h1 {
 
 .divTable{
 	display: table;
-	/*width: 100%;*/
+	width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-collapse: collapse;
 }
 .divTableRow {
 	display: table-row;
     height: 100px;
 }
-/*.divTableHeading {
+.divTableCell/*, .divTableHead*/ {
+	border: 5px ridge rgb(44, 137, 219);
+	display: table-cell;
+	padding: 0px 10px;
+    
+}
+
+/*
+.divTableHeading {
 	background-color: #a03b3b;
 	display: table-header-group;
-}
-*/
-
-.divTableCell, .divTableHead {
-	border: 3px solid rgb(44, 137, 219);
-	display: table-cell;
-	padding: 3px 10px;
-    
 }
 .divTableCell{
     margin:auto;
@@ -43,6 +44,8 @@ h1 {
 	display: table-header-group;
 	font-weight: bold;
 }
+
+
 .divTableFoot {
 	background-color: #EEE;
 	display: table-footer-group;
@@ -51,3 +54,4 @@ h1 {
 .divTableBody {
 	display: table-row-group;
 }
+*/
