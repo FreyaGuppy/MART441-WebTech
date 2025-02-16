@@ -3,13 +3,13 @@
     src: url("Stardew_Valley.otf") format("opentype");
 }
 body{
-    background-color:beige;
+    background-color:rgb(55, 95, 27);
     font-family: Stardew Valley;
 }
 h1 {
     text-align: center;
-    font-size:40px;
-    color:rgb(168, 115, 60);
+    font-size:50px;
+    color:rgb(236, 157, 72);
 }
 
 .divTable{
@@ -19,15 +19,20 @@ h1 {
 .divTableRow {
 	display: table-row;
 }
-.divTableHeading {
-	background-color: #EEE;
+/*.divTableHeading {
+	background-color: #a03b3b;
 	display: table-header-group;
 }
+*/
 
 .divTableCell, .divTableHead {
-	border: 1px solid #999999;
+	border: 3px solid rgb(44, 137, 219);
 	display: table-cell;
 	padding: 3px 10px;
+    
+}
+.divTableCell{
+    margin:auto;
 }
 .divTableHeading {
 	background-color: #EEE;
