@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Matching Game</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 10px;
+        }
+        .card {
+            width: 100px;
+            height: 100px;
+            background-image: url('../images/gunther.png');
+            background-size: cover;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid" id="gameGrid"></div>
+    <script>
+        const images = ["../images/chickenStatue.png", "../images/jamborite.png", "../images/dinosaurEgg.png", "../images/helm.png", "../images/starShard.png", "../images/prismaticShard.png"];
+        let actualImages = [...images, ...images]; // Duplicate images for pairs
+        actualImages.sort(() => Math.random() - 0.5); // Shuffle images
+
+        const grid = document.getElementById("gameGrid");
+
+        actualImages.forEach((image, index) => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            card.dataset.image = image;
+            card.dataset.index = index;
+
+            card.addEventListener("click", function() {
+                this.style.backgroundImage = `url(${this.dataset.image})`;
+            });
+
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
