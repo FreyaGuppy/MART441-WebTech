@@ -82,28 +82,6 @@ p {
     justify-content: center;
     align-items: center;
 }
-
-/*
-.divTableHeading {
-	background-color: #a03b3b;
-	display: table-header-group;
+#perfectScoreAlert{
+	color:rgb(197, 141, 249);
 }
-.divTableCell{
-    margin:auto;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-	font-weight: bold;
-}
-
-
-.divTableFoot {
-	background-color: #EEE;
-	display: table-footer-group;
-	font-weight: bold;
-}
-.divTableBody {
-	display: table-row-group;
-}
-*/

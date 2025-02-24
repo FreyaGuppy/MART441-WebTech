@@ -113,18 +113,12 @@ function playerInfo()
 {
     var playerInformation = localStorage.getItem("playerInfo");
     player = JSON.parse(playerInformation);
-    var str = "Name: " + player.firstname + " " + player.lastname + "<br>" +
-    "Age: " + player.age + "<br>" +
-    "Score: " + player.score;
+    var str = "Name: " + player.firstname + " " + player.lastname + "<br>" + "Age: " + player.age + "<br>" + "Score: " + player.score;
     if(document.getElementById("endInformation") != null)
     {
         document.getElementById("endInformation").innerHTML = str;
+    }  
+    if(player.score == 6){
+        document.getElementById("perfectScoreAlert").innerHTML = "<p>Wow! The spirits must be very happy today!</p><br><p>You got a perfect score!</p>";
     }
-    
-   
 }
-/*
-function playAgain(){
-    window.location = index.html
-}
-*/

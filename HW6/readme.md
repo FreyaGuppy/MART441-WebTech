@@ -1,1 +1,3 @@
 See if you can get a perfect score...
+
+(and let me know if the perfect score message shows up, because I don't know how to test it other than getting a perfect score.)
