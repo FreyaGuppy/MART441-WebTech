@@ -1,0 +1,109 @@
+@font-face {
+    font-family: "Stardew Valley";
+    src: url("Stardew_Valley.otf") format("opentype");
+}
+body{
+    background-color:rgb(55, 95, 27);
+    font-family: Stardew Valley;
+	color:rgb(236, 157, 72);
+}
+h1{
+    text-align: center;
+    font-size:50px;
+}
+
+button {
+	background-color:rgb(44, 137, 219);
+	font-family: Stardew Valley;
+	border: none;
+	border-radius: 10px;
+	font-size: 30;
+}
+
+input {
+	background-color:rgb(118, 190, 252);
+	border: none;
+	border-radius: 5px;
+	font-size: 15;
+}
+
+p {
+	text-align: center;
+	font-size: 110%;
+}
+
+#formModal{
+	font-size: large;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    border-collapse: collapse;
+}
+.modal-content {
+	background:rgb(76, 42, 17);
+	padding: 20px;
+	border-radius: 8px;
+	text-align: center;
+}
+
+#mainContent {
+	display: none;
+}
+
+.divTable{
+	display: table;
+	width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-collapse: collapse;
+}
+.divTableRow {
+	display: table-row;
+    height: 100px;
+}
+.divTableCell/*, .divTableHead*/ {
+	border: 5px ridge rgb(44, 137, 219);
+	display: table-cell;
+	padding: 0px 10px;
+    
+}
+
+#scoreBox{
+	background-color: rgb(76, 42, 17);
+}
+
+#endInformation{
+	font-size: 40;
+	/*background-color: rgb(76, 42, 17);*/
+}
+.btnRestart{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+.divTableHeading {
+	background-color: #a03b3b;
+	display: table-header-group;
+}
+.divTableCell{
+    margin:auto;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+
+
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+*/
