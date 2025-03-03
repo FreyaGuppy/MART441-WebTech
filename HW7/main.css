@@ -1,0 +1,25 @@
+body {
+    background-color: black;
+    color: grey;
+}
+
+button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: grey;
+    font-family: 'Times New Roman', Times, serif;
+    display: block;
+    margin: auto;
+}
+
+div {
+    margin:auto;
+    /*text-align: center;*/
+    width: 50%;
+}
+
+#pageTitle {
+    text-align: center;
+}
+
