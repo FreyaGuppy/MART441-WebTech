@@ -1,4 +1,5 @@
 // let's create an empty array. We will add to this later
+
 var myViewFinderArray = new Array();
 
 // this is the main ViewFinder class
