@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(255, 216, 216);
+    color: rgb(229, 121, 155);
+}
+
+button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    color:rgb(229, 121, 155);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    display: block;
+    margin: auto;
+}
+
+div {
+    margin:auto;
+    /*text-align: center;*/
+    width: 50%;
+}
+
+#pageTitle {
+    text-align: center;
+    font-style: italic;
+}
+#title {
+    font-size: 20px;
+}
+a {
+    color:rgb(226, 94, 136);
+}
+#inspiroBot{
+    font-size: 12px;
+}
+
