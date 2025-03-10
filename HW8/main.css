@@ -17,7 +17,6 @@ button {
 
 div {
     margin:auto;
-    /*text-align: center;*/
     width: 50%;
 }
 
@@ -70,6 +69,7 @@ a {
 #square2{
     height: 50px;
     width: 50px;
+    border-radius: 15%;
     background-color: #ffeb9c;
     position:absolute;
     display:none;
@@ -77,11 +77,12 @@ a {
 #square3{
     height: 50px;
     width: 50px;
+    border-radius: 15%;
     background-color: #ffeb9c;
     position:absolute;
     display:none;
 }
 .txtInShape{
     text-align: center;
-    font-size: 10;
+    font-size: 10; /* I can't figure out why this isn't changing the size of the text...*/
 }
