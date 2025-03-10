@@ -12,7 +12,6 @@ class PictureBook {
     }
 }
 
-// this function is called in the body of the HTML page so that the objects are created and added to the array
 function initializeArray() {
     myPictureBookArray.push(new PictureBook("images/bigSmile.gif", "With uncontrollable thoughts come uncontrollable jealousies."));
     myPictureBookArray.push(new PictureBook("images/happy.webp", "Global decay hasn't even begun."));
@@ -27,7 +26,6 @@ function initializeArray() {
 }
 
 function accessInformation() {
-    // Get the next object from the array
     var selectedPictureBook = myPictureBookArray[currentIndex];
     var imageContainer = $("#imageContainer");
     var titleContainer = $("#title");
@@ -35,7 +33,7 @@ function accessInformation() {
     var moveDistance = 300;
 
     var currentImage = imageContainer.children("img");
-    var currentTitle = titleContainer.children("i"); // Target the text inside <i> tags
+    var currentTitle = titleContainer.children("i");
 
     // Ensure the image has a relative position for animation
     if (!currentImage.length) {
@@ -62,3 +60,35 @@ function accessInformation() {
     // Move to the next index, loop back to 0 if at the end
     currentIndex = (currentIndex + 1) % myPictureBookArray.length;
 }
+
+$(document).ready(function() {
+    function animateShapes() {
+        $("#circle1").css({ left: "0", display: "block" }).animate({
+            left: '100%'
+        }, 10000, function() {
+            $("#square1").css({ left: "0", display: "block" }).animate({
+                left: '100%'
+            }, 10000, function() {
+                $("#circle2").css({ left: "0", display: "block" }).animate({
+                    left: "100%"
+                }, 10000, function() {
+                    $("#square2").css({ left: "0", display: "block" }).animate({
+                        left: "100%"
+                    }, 10000, function() {
+                        $("#circle3").css({ left: "0", display: "block" }).animate({
+                            left: "100%"
+                        }, 10000, function() {
+                            $("#square3").css({ left: "0", display: "block" }).animate({
+                                left: "100%"
+                            }, 10000, function() {
+                                animateShapes();
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    }
+
+    animateShapes();
+});

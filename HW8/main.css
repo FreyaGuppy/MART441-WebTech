@@ -21,6 +21,7 @@ div {
     width: 50%;
 }
 
+
 #pageTitle {
     text-align: center;
     font-style: italic;
@@ -35,3 +36,52 @@ a {
     font-size: 12px;
 }
 
+#circle1{
+    height: 50px;
+    width: 50px;
+    background-color: #ffeb9c;
+    border-radius: 50%;
+    position:absolute;
+}
+#circle2{
+    height: 50px;
+    width: 50px;
+    background-color: #ffeb9c;
+    border-radius: 50%;
+    position:absolute;
+    display:none;
+}
+#circle3{
+    height: 50px;
+    width: 50px;
+    background-color: #ffeb9c;
+    border-radius: 50%;
+    position:absolute;
+    display:none;
+}
+#square1{
+    height: 50px;
+    width: 50px;
+    border-radius: 15%;
+    background-color: #ffeb9c;
+    position:absolute;
+    display:none;
+}
+#square2{
+    height: 50px;
+    width: 50px;
+    background-color: #ffeb9c;
+    position:absolute;
+    display:none;
+}
+#square3{
+    height: 50px;
+    width: 50px;
+    background-color: #ffeb9c;
+    position:absolute;
+    display:none;
+}
+.txtInShape{
+    text-align: center;
+    font-size: 10;
+}
