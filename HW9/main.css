@@ -1,0 +1,46 @@
+@font-face {
+    font-family: conthrax;
+    src: url(fonts/Conthrax-SemiBold.otf);
+  }
+
+@font-face {
+    font-family: garet;
+    src: url(fonts/Garet-Book.otf);
+}
+body{
+    background-color: #171738;
+    font-family: garet;
+    color: #FF7F11;
+}
+
+button {
+    font-family: garet;
+    background-color: #96031A;
+    color:#F3FCF0;
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+}
+
+#pageTitle{
+    font-family: conthrax;
+    text-align: center;
+}
+
+#pageInformation{
+    text-align: center;
+    width: 70%;
+    margin:auto;
+    color: #ffca68;
+}
+
+#buttons{
+    margin:auto;
+    text-align:center;
+}
+
+#meteoriteInformation{
+    color: #F3FCF0;
+}
+
+
