@@ -1,6 +1,6 @@
 $.fn.lightMode = function() {
     $("body").css("background-color", "#F3FCF0");
-    $("table").css("color", "#171738");
+    $("body").css("color", "#171738");
 }
 
 $(document).ready(function () {
