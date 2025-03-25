@@ -1,3 +1,8 @@
+$.fn.lightMode = function() {
+    $("body").css("background-color", "#F3FCF0");
+    $("table").css("color", "#171738");
+}
+
 $(document).ready(function () {
     $("#sortHeaviest").click(function () {
         $.getJSON("meteoriteData.json", function (data) {
@@ -39,22 +44,54 @@ $(document).ready(function () {
 
     $("#sortAlphabetical").click(function () {
         $.getJSON("meteoriteData.json", function (data) {
+            // Sort alphabetically by name
             data.sort((a, b) => a.name.localeCompare(b.name));
-
-            // Create an HTML string with sorted meteorite names and masses
-            let output = "<ul>";
+    
+            // Start building the table with a header row
+            let output = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>ID</th>
+                            <th>Mass (g)</th>
+                            <th>Class</th>
+                            <th>Coordinates</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+    
+            // Loop through sorted data and add table rows
             data.forEach(meteorite => {
-                if (meteorite.name && meteorite.mass) { // Ensure both values exist
-                    output += `<li>${meteorite.name}<ul><li>ID: ${meteorite.id}</li><li>Mass: ${meteorite.mass}g</li><li>Class: ${meteorite.recclass}</li></ul>`;
+                if (meteorite.name && meteorite.mass) { // Ensure values exist
+                    let coords = meteorite.geolocation?.coordinates || ["N/A", "N/A"]; // Handle missing coordinates
+                    
+                    output += `
+                        <tr>
+                            <td>${meteorite.name}</td>
+                            <td>${meteorite.id}</td>
+                            <td>${meteorite.mass}</td>
+                            <td>${meteorite.recclass}</td>
+                            <td>${coords[1]}, ${coords[0]}</td> <!-- Latitude, Longitude -->
+                        </tr>
+                    `;
                 }
             });
-            output += "</ul>";
-
+    
+            output += `</tbody></table>`; // Close table
+    
             // Display the sorted data
             $("#meteoriteInformation").html(output);
         });
     });
+
+    $("#viewMode").click(function (){
+        $("body").lightMode();
+    });
 });
+
+
 
 /*
 function fadeText(){
