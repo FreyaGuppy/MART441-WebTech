@@ -1,7 +1,8 @@
+
 $.fn.lightMode = function() {
-    $("body").css("background-color", "#F3FCF0");
-    $("body").css("color", "#171738");
+    
 }
+
 
 $(document).ready(function () {
     $("#sortHeaviest").click(function () {
@@ -87,14 +88,6 @@ $(document).ready(function () {
     });
 
     $("#viewMode").click(function (){
-        $("body").lightMode();
+        $("body").toggleClass("light-mode"); // Add or remove the class
     });
 });
-
-
-
-/*
-function fadeText(){
-    $("#meteoriteInformation").fadeOut("slow").fadeIn("slow");
-}
-*/

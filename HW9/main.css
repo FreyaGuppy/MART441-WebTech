@@ -18,7 +18,7 @@ button {
     background-color: #96031A;
     color:#F3FCF0;
     border: none;
-    border-radius: 15px;
+    border-radius: 1em;
     font-size: 15px;
     padding-left: 10px;
     padding-right: 10px;
@@ -26,6 +26,11 @@ button {
     padding-bottom: 5px;
     margin-left: 6px;
     margin-right: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color:#CB4116;
 }
 
 table {
@@ -68,6 +73,37 @@ ul {
 #meteoriteInformation{
     color: #F3FCF0;
     text-align: center;
+}
+
+.light-mode {
+    background-color: #F3FCF0;
+}
+.light-mode #pageInformation {
+    color:#96031A;
+}
+
+.light-mode table, 
+.light-mode th, 
+.light-mode td, 
+.light-mode ul {
+    color: #171738;
+}
+
+.light-mode th {
+    background-color: #7A898A;
+}
+
+#viewMode {
+    padding: 5px 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #7A898A;
+    color: white;
+    border-radius: 1em;
+}
+
+#viewMode:hover {
+    background-color: #B6C2BD;
 }
 
 

@@ -3,3 +3,5 @@ add more keys to each button, like have more info displayed, but still sorted by
 more buttons for different sorting
 
 css!
+
+use toggle for light/dark mode, css etc, chatgpt got me. Go to sleep now
