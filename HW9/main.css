@@ -7,6 +7,12 @@
     font-family: garet;
     src: url(fonts/Garet-Book.otf);
 }
+
+@font-face {
+    font-family: alien;
+    src: url(fonts/Alien_Hieroglyph.ttf);
+}
+
 body{
     background-color: #171738;
     font-family: garet;

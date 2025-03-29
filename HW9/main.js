@@ -1,7 +1,8 @@
+$.fn.alienText = function () {
+    this.find("*").css("font-family", "alien");
+    return this;
+};
 
-$.fn.lightMode = function() {
-    
-}
 
 
 $(document).ready(function () {
@@ -90,4 +91,9 @@ $(document).ready(function () {
     $("#viewMode").click(function (){
         $("body").toggleClass("light-mode"); // Add or remove the class
     });
+
+    $("#translateBtn").click(function (){
+        $("body").alienText();
+    });
+
 });
