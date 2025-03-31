@@ -1,0 +1,1 @@
+For parameter number seven, "The objects should change size if they collide," I decided to just have the "enemy" object change size so that it could be "defeated" while the player object stays the same.

@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>Canvas</title>
+        <style>
+            #myCanvas{
+                background-color: aquamarine;
+                border: solid, blue, 5px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        
+    </head>
+   
+    <body>
+        <canvas id="myCanvas" height="600" width="800"></canvas>
+
+    </body>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        
+        var x = 50;
+        var y = 50;
+        var speed = 20;
+
+        ctx.fillStyle = "#0000FF";
+        drawSquare();
+        
+        
+        $(document).ready(function(){
+                $(this).keypress(function(event){
+                getKey(event);
+            });
+        });
+
+        function getKey(event)
+            {
+                var char = event.which || event.keyCode;
+                var actualLetter = String.fromCharCode(char);
+                if(actualLetter == "w")
+                {
+                    moveUp();
+                }
+                else if(actualLetter == "s")
+                {
+                    moveDown();
+                }
+                else if(actualLetter == "d")
+                {
+                    moveRight();
+                }
+                else if(actualLetter == "a")
+                {
+                    moveLeft();
+                }
+                drawSquare();
+            }
+
+            function drawSquare()
+        {
+            ctx.clearRect(0,0,800,600);
+            ctx.fillRect(x, y, 20, 20);
+        }
+
+        function moveUp()
+            {
+                y-=speed;
+            }
+        function moveDown()
+            {
+                y+=speed;
+            }
+        function moveRight()
+            {
+                x+=speed;
+            }
+        function moveLeft()
+            {
+                x-=speed;
+            }
+        
+    </script>
+</html>
+
+
+

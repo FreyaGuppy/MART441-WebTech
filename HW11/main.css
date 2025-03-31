@@ -1,0 +1,22 @@
+@font-face {
+    font-family: captain;
+    src: url(media/captain.otf);
+}
+
+body{
+    font-family: captain;
+    font-size: 25px;
+    text-align: center;
+    background-color: #F4EBD9;
+    color: #1B2021;
+}
+
+h2{
+    color:  #E15554;
+}
+
+
+#myCanvas{
+    background-color: #F3A712;
+    border: solid, #1B2021, 7px;
+}
