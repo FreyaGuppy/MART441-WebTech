@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Canvas</title>
+    </head>
+    <script src="libs/jquery.min.js"></script>
+    <script src="scripts/square.js"></script>
+    <script src="scripts/canvas.js"></script>
+    <title>Collection Game</title>
+
+    <style>
+        @font-face {
+            font-family: pixel ;
+            src: url(Daydream.ttf);
+        }
+        #myCanvas{
+            border:#9cd061;
+            border-style: solid;
+            border-width: 5px;
+            background-color: #CEF7A0;
+            
+        }
+        body {
+            text-align: center;
+            font-family: pixel;
+            color:#119DA4;
+            font-size: 12px;
+            background-color: #03012C;
+        }
+    </style>
+    <body>
+        <br>
+        <div><h1>Collect the beans! Stay away from the walls!</h1></div>
+        <canvas id="myCanvas" height="600" width="800"></canvas>
+        <audio id="collectSound" src="audio/chomp.mp3" preload="auto"></audio>
+        <audio id="wallHitSound" src="audio/wrong.mp3" preload="auto"></audio>
+
+      
+    </body>
+</html>
