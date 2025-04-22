@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>My first three.js app</title>
+        <style>
+            body { margin: 0; }
+            canvas { display: block; }
+        </style>
+    </head>
+    <body>
+        <script src="js/three.min.js"></script>
+        <script>
+            /*
+            //rotating cube
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+
+            var geometry = new THREE.BoxGeometry();
+            var material = new THREE.MeshBasicMaterial({
+                color: 0x00ff00
+            });
+            var cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+
+            camera.position.z = 5;
+
+            function animate()
+            {
+                requestAnimationFrame( animate );
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                renderer.render( scene, camera );
+            }
+            animate();
+            */
+
+            /*
+            //lines
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+
+            var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+            camera.position.set( 0, 0, 100 );
+            camera.lookAt( 0, 0, 0 );
+
+            var scene = new THREE.Scene();
+
+            //create a blue LineBasicMaterial
+            var material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
+            var points = [];
+            points.push( new THREE.Vector3( - 10, 0, 0 ) );
+            points.push( new THREE.Vector3( 0, 10, 0 ) );
+            points.push( new THREE.Vector3( 10, 0, 0 ) );
+
+            var geometry = new THREE.BufferGeometry().setFromPoints( points );
+            var line = new THREE.Line( geometry, material );
+
+            scene.add( line );
+            renderer.render( scene, camera );
+
+            */
+
+            //text
+            var scene = new THREE.Scene()
+            var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000)
+            var renderer = new THREE.WebGLRenderer()
+            camera.position.x = 10
+            camera.position.y = 0o0
+            camera.position.z = 90
+
+
+            renderer.setClearColor(0x00DDDD) //sets background color 
+            renderer.setSize(window.innerWidth, window.innerHeight)
+
+            camera.lookAt(scene.position)
+            document.body.appendChild(renderer.domElement)
+
+
+            var increment = 0
+            var render = function() {
+                increment += 0.01
+                requestAnimationFrame(render);
+
+                spinCamera()
+                renderer.render(scene, camera);
+            };
+            loadFont()
+            render();
+
+            //SETTINGS
+            var text = "aems",
+                height = 2,
+                size = 40,
+                curveSegments = 10,
+                bevelThickness = 1,
+                bevelSize = 0.3,
+                bevelSegments = 3,
+                bevelEnabled = true,
+                font = undefined
+
+
+            var rotation = 0
+
+            function spinCamera() {
+                rotation += 0.01
+                camera.position.z = Math.sin(rotation) * 80;
+                camera.position.x = Math.cos(rotation) * 80;
+                camera.lookAt(scene.position)
+            }
+
+            function loadFont() {
+                var loader = new THREE.FontLoader();
+
+                loader.load("https://montana-media-arts.github.io/441-WebTech-Spring2022-Examples/Week%2014/fonts/helvetiker_regular.typeface.json", function(res) {
+                    font = res;
+                    createText();
+                });
+            }
+
+            function createText() {
+                // change the text here
+                textGeo = new THREE.TextGeometry('! ! !', {
+                    font: font,
+                    size: size,
+                    height: height,
+                    curveSegments: curveSegments,
+                    weight: "normal",
+                    bevelThickness: bevelThickness,
+                    bevelSize: bevelSize,
+                    bevelSegments: bevelSegments,
+                    bevelEnabled: bevelEnabled
+                });
+                textGeo.computeBoundingBox();
+                textGeo.computeVertexNormals();
+
+                // change the color here
+                var color = new THREE.Color(0xff0000);
+                var textMaterial = new THREE.MeshBasicMaterial({
+                    color: color
+                });
+                var text = new THREE.Mesh(textGeo, textMaterial)
+                text.position.x = -textGeo.boundingBox.max.x / 2;
+                text.castShadow = true;
+                scene.add(text)
+            }
+
+
+
+        </script>
+    </body>
+</html>
