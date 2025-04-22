@@ -7,7 +7,7 @@ function createBox() {
   // create a box
   var geometry = new THREE.BoxGeometry();
   var material = new THREE.MeshBasicMaterial({
-    color: 0x59472e
+    color: 0x7a4016
   });
   cube = new THREE.Mesh(geometry, material);
   cube.position.set(0, 0, -40);
@@ -95,7 +95,7 @@ function getCamera() {
  **/
 
 function getLight(scene) {
-  var light = new THREE.PointLight(0xffffff, 1, 0);
+  var light = new THREE.PointLight(0xff0090, 1, 0);
   light.position.set(20, 50, 20);
   scene.add(light);
 
@@ -141,7 +141,7 @@ function getControls(camera, renderer) {
 
 function loadModel() {
   loader = new THREE.OBJLoader();
-  loader.load('models/Skull.obj', function (object) {
+  loader.load('models/dogHead.obj', function (object) {
     object.rotation.z = Math.PI;
     modelObject = object;
     scene.add(object);
@@ -151,8 +151,9 @@ function loadModel() {
 
 function animateModel() {
   requestAnimationFrame(animateModel);
-  modelObject.rotation.x += 0.05;
-  modelObject.rotation.y += 0.05;
+  modelObject.rotation.x += 0;
+  modelObject.rotation.y += 0;
+  modelObject.rotation.z += 0.05;
 }
 
 
@@ -172,6 +173,7 @@ var light = getLight(scene);
 var renderer = getRenderer();
 var controls = getControls(camera, renderer);
 var game1 = createBox();
+
 
 
 loadModel()
