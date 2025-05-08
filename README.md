@@ -13,9 +13,9 @@ Base URL for site:
 
 **Inspiring quotes:** https://freyaguppy.github.io/MART441-WebTech/HW8
 
-**My very first game:** https://freyaguppy.github.io/MART441-WebTech/HW11
+**My very first player character game:** https://freyaguppy.github.io/MART441-WebTech/HW11
 
-**My second game (now with beans):** https://freyaguppy.github.io/MART441-WebTech/HW12
+**Brand new game (now with beans):** https://freyaguppy.github.io/MART441-WebTech/HW12
 
 **My first Phaser game, first iteration of Snake Life:** https://freyaguppy.github.io/MART441-WebTech/HW13
 
