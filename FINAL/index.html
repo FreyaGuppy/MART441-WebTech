@@ -1,0 +1,524 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 10</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        @font-face {
+            font-family: daydream;
+            src: url(fonts/Daydream.ttf);
+        }
+        @font-face {
+            font-family: gameplay;
+            src: url(fonts/Gameplay.ttf);
+        }
+        body {
+            margin: 0;
+            text-align: center;
+            font-family: daydream;
+            color: #3d8d27;
+            background: black;
+        }
+        p {
+            font-family: gameplay;
+        }
+    </style>
+</head>
+<body>
+    <span style="font-family: gameplay; position: absolute; left: -9999px;">Loading font...</span>
+
+    <div id="title"><h1>Snake Life</h1></div>
+
+<script type="text/javascript">
+
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var player;
+var stars;
+var orange;
+var bombs;
+var spikes;
+var platforms;
+var cursors;
+var lives = 3;
+var score = 0;
+var round = 1;
+var hitCooldown = false;
+var gameOver = false;
+var scoreText;
+var livesText;
+var roundText;
+var gameOverText;
+var restartKey;
+var allowRestart = false;
+
+var game = new Phaser.Game(config);
+
+function preload ()
+{
+    this.load.image('sky', 'assets/backgroundSky.png');
+    this.load.image('waterBackground', 'assets/backgroundWater.png');
+    this.load.image('iceBackground', 'assets/backgroundIce.png');
+    this.load.image('lavaBackground', 'assets/backgroundLava.png');
+    this.load.image('spaceBackground', 'assets/backgroundSpace.png');
+
+    this.load.image('ground', 'assets/platformGrass.png');
+    this.load.image('waterPlatform', 'assets/platformWater.png');
+    this.load.image('icePlatform', 'assets/platformIce.png');
+    this.load.image('lavaPlatform', 'assets/platformLava.png');
+    this.load.image('spacePlatform', 'assets/platformSpace.png');
+
+    this.load.image('spikes', 'assets/spikesSky.png');
+    this.load.image('spikesWater', 'assets/spikesWater.png');
+    this.load.image('spikesIce', 'assets/spikesIce.png');
+    this.load.image('spikesLava', 'assets/spikesLava.png');
+    this.load.image('spikesSpace', 'assets/spikesSpace.png');
+
+    this.load.image('orange', 'assets/fruitOrange.png');
+    this.load.image('banana', 'assets/fruitBanana.png');
+    this.load.image('cherries', 'assets/fruitCherries.png');
+    this.load.image('blueberries', 'assets/fruitBlueberries.png');
+    this.load.image('spaceFruit', 'assets/fruitSpace.png');
+
+    this.load.image('star', 'assets/star.png');
+    this.load.image('bomb', 'assets/bomb.png');
+    this.load.image('explosion', 'assets/explosion.png'); 
+    this.load.image('death', 'assets/death.png');
+    this.load.spritesheet('snake', 'assets/snake.png', { frameWidth: 50, frameHeight: 100 });
+
+    this.load.audio('spikeHit', 'audio/spikeHit.wav');
+    this.load.audio('bombOw', 'audio/bombOw.wav');
+    this.load.audio('crunch', 'audio/crunch.wav');
+    this.load.audio('deathScream', 'audio/deathScream.mp3');
+    this.load.audio('starDing1', 'audio/starDing1.wav')
+    this.load.audio('starDing2', 'audio/starDing2.wav')
+}
+
+function create ()
+{
+    //  A simple background for our game
+    this.bg = this.add.image(400, 300, 'sky');
+
+    //  The platforms group contains the ground and the 2 ledges we can jump on
+    platforms = this.physics.add.staticGroup();
+
+    //  Here we create the ground.
+    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+
+    //  Now let's create some ledges
+    platforms.create(600, 400, 'ground');
+    platforms.create(50, 250, 'ground');
+    platforms.create(750, 220, 'ground');
+
+    //spikes
+    spikes = this.physics.add.staticGroup();
+    spikes.create(600, 376, 'spikes');
+    spikes.create(180, 226, 'spikes');
+    spikes.create(680, 196, 'spikes');
+
+    //orange
+    orange = this.physics.add.group();
+    orange.create(50, 218, 'orange');
+
+    // The player and its settings
+    player = this.physics.add.sprite(100, 350, 'snake'); //starting position of player
+
+    //  Player physics properties. Give the little guy a slight bounce.
+    player.setBounce(0.2);
+    player.setCollideWorldBounds(true);
+
+    //  Our player animations, turning, slithering left and right.
+    this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNumbers('snake', { start: 0, end: 3 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'turn',
+        frames: [ { key: 'snake', frame: 4 } ],
+        frameRate: 20
+    });
+
+    this.anims.create({
+        key: 'right',
+        frames: this.anims.generateFrameNumbers('snake', { start: 5, end: 8 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+    //  Input Events
+    cursors = this.input.keyboard.createCursorKeys();
+    //restart key
+    restartKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+
+    //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
+    stars = this.physics.add.group({
+        key: 'star',
+        repeat: 11, //change back to 11 after testing, 0 for testing
+        setXY: { x: 12, y: 0, stepX: 70 } //change x back to 12 after testing, 350 for testing
+    });
+
+    stars.children.iterate(function (child) {
+
+        //  Give each star a slightly different bounce
+        child.setBounceY(Phaser.Math.FloatBetween(0.4, 1));
+        child.setGravityY(10);
+    });
+
+    bombs = this.physics.add.group();
+
+    //  The score
+    scoreText = this.add.text(16, 16, 'Score: 0', { fontFamily: 'gameplay, sans-serif', fontSize: '24px', fill: '#000' });
+
+    // Lives
+    livesText = this.add.text(650, 16, 'Lives: 3', { fontFamily: 'gameplay, sans-serif', fontSize: '24px', fill: '#000'});
+
+    //round
+    roundText = this.add.text(370, 16, 'Round: 1', { fontFamily: 'gameplay, sans-serif', fontSize: '18px', fill: '#000' });
+
+    //  Collide the player and the stars with the platforms
+    this.physics.add.collider(player, platforms);
+    this.physics.add.collider(stars, platforms);
+    this.physics.add.collider(bombs, platforms);
+    this.physics.add.collider(orange, platforms);
+
+
+    //  Checks to see if the player overlaps with any of the stars if he does call the collectStar function
+    this.physics.add.overlap(player, stars, collectStar, null, this);
+
+    this.physics.add.collider(player, bombs, hitBomb, null, this);
+    this.physics.add.collider(player, spikes, hitSpike, null, this);
+    this.physics.add.collider(player, orange, eatFruit, null, this);
+}
+
+function update ()
+{
+    if (gameOver)
+    {
+        // Only allow restart if cooldown has passed
+        if (allowRestart && (Phaser.Input.Keyboard.JustDown(restartKey) || Phaser.Input.Keyboard.JustDown(cursors.space))) {
+            location.reload();
+        }
+        return;
+    }
+
+    if (cursors.left.isDown)
+    {
+        player.setVelocityX(-160);
+
+        player.anims.play('left', true);
+    }
+    else if (cursors.right.isDown)
+    {
+        player.setVelocityX(160);
+
+        player.anims.play('right', true);
+    }
+    else
+    {
+        player.setVelocityX(0);
+
+        player.anims.play('turn');
+    }
+
+    if ((cursors.space.isDown || cursors.up.isDown) && player.body.touching.down)
+    {
+        player.setVelocityY(-330);
+    }
+
+    
+}
+
+function collectStar (player, star)
+{
+    star.disableBody(true, true);
+
+    // Randomly choose and play one of the two star sounds
+    const chosenSound = Phaser.Math.Between(0, 1) === 0 ? 'starDing1' : 'starDing2';
+    this.sound.play(chosenSound);
+
+    //  Add and update the score
+    score += 1;
+    scoreText.setText('Score: ' + score);
+
+    if (stars.countActive(true) === 0)
+    {
+        //  A new batch of stars to collect
+        stars.children.iterate(function (child) {
+
+            child.enableBody(true, child.x, 0, true, true);
+
+        });
+
+        var bombX = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+        var orangeX = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+
+        var bomb = bombs.create(bombX, 16, 'bomb');
+        bomb.setBounce(1);
+        bomb.setCollideWorldBounds(true);
+        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+        bomb.allowGravity = false;
+
+        var newOrange = orange.create(orangeX, 16, 'orange');
+        newOrange.setBounce(0.2);
+        newOrange.setCollideWorldBounds(true);
+        newOrange.setVelocity(Phaser.Math.Between(-200, 200), 0);
+        newOrange.allowGravity = true;
+
+        round += 1;
+        roundText.setText('Round: ' + round);
+
+        /*
+        //level tester
+        if(round > 1){
+            spaceLevel.call(this);
+        }
+        */
+        if(round >2 && round <6){
+            waterLevel.call(this);
+        }
+        else if(round >5 && round <9){
+            iceLevel.call(this);
+        }
+        else if(round >8 && round <12){
+            lavaLevel.call(this);
+        }
+        else if(round >11){
+            spaceLevel.call(this);
+        }
+        
+
+    }
+}
+
+function hitBomb (player, bomb)
+{
+    if (hitCooldown) return;
+    hitCooldown = true;
+
+    const bombOw = this.sound.add("bombOw", { loop: false });
+    bombOw.play();
+
+    player.setTint(0xff0000);
+
+    const explosion = this.add.sprite(bomb.x, bomb.y, 'explosion');
+
+    this.time.delayedCall(300, () => {
+            explosion.destroy();
+        });
+
+    bomb.disableBody(true, true);
+
+    // Clear tint and cooldown after short delay
+    this.time.delayedCall(500, () => {
+        player.clearTint();
+        hitCooldown = false;
+    });
+
+    lives += -2;
+    livesText.setText('Lives: ' + lives);
+
+    if (lives <= 0){
+        livesText.setText('Lives: 0')
+        gameOverScene(this);
+    }
+}
+
+function hitSpike (player, spike)
+{
+    if (hitCooldown) return;
+    hitCooldown = true;
+    
+    const spikeHitSound = this.sound.add("spikeHit", { loop: false });
+    spikeHitSound.play();
+
+    const knockback = 200;
+
+    player.setVelocityY(-200);
+    player.setTint(0xff0000);
+
+    // Decrease score and lives
+    score -= 1;
+    scoreText.setText('Score: ' + score);
+
+    lives += -1;
+    livesText.setText('Lives: ' + lives);
+
+    // Clear tint and cooldown after short delay
+    this.time.delayedCall(500, () => {
+        player.clearTint();
+        hitCooldown = false;
+    });
+
+    if (lives <= 0){
+        livesText.setText('Lives: 0')
+        gameOverScene(this);
+    }
+}
+
+function eatFruit(player, orange)
+{
+    const crunchSound = this.sound.add("crunch", { loop: false });
+    crunchSound.play();
+
+    lives += 1;
+    livesText.setText('Lives: ' + lives);
+
+    orange.disableBody(true, true);
+}
+
+function waterLevel(){
+    // Change background
+    if (this.bg) this.bg.destroy();
+    this.bg = this.add.image(400, 300, 'waterBackground').setDepth(-1);
+
+    // Clear and reset platforms
+    platforms.clear(true, true);
+    platforms.create(400, 568, 'waterPlatform').setScale(2).refreshBody();
+    platforms.create(100, 400, 'waterPlatform');
+    platforms.create(700, 300, 'waterPlatform');
+
+    // Clear and reset spikes
+    spikes.clear(true, true);
+    spikes.create(110, 376, 'spikesWater');
+    spikes.create(600, 276, 'spikesWater');
+    
+    // Update orange texture
+    orange.children.iterate(function(child) {
+        child.setTexture('banana');
+    });   
+}
+
+function iceLevel(){
+    // Change background
+    if (this.bg) this.bg.destroy();
+    this.bg = this.add.image(400, 300, 'iceBackground').setDepth(-1);
+
+    // Clear and reset platforms
+    platforms.clear(true, true);
+    platforms.create(400, 568, 'icePlatform').setScale(2).refreshBody();
+    platforms.create(150, 300, 'icePlatform');
+    platforms.create(700, 150, 'icePlatform');
+    platforms.create(500, 450, 'icePlatform').setScale(0.5).refreshBody();
+
+    // Clear and reset spikes
+    spikes.clear(true, true);
+    spikes.create(110, 276, 'spikesIce');
+    spikes.create(570, 434, 'spikesIce');
+    
+    // Update orange texture
+    orange.children.iterate(function(child) {
+        child.setTexture('blueberries');
+    });
+    
+}
+
+function lavaLevel(){
+    // Change background
+    if (this.bg) this.bg.destroy();
+    this.bg = this.add.image(400, 300, 'lavaBackground').setDepth(-1);
+
+    // Clear and reset platforms
+    platforms.clear(true, true);
+    platforms.create(400, 568, 'lavaPlatform').setScale(2).refreshBody();
+    platforms.create(400, 400, 'lavaPlatform');
+    platforms.create(400, 250, 'lavaPlatform').setScale(0.75).refreshBody();
+    platforms.create(50, 150, 'lavaPlatform').setScale(0.25).refreshBody();
+    platforms.create(750, 150, 'lavaPlatform').setScale(0.25).refreshBody();
+
+    // Clear and reset spikes
+    spikes.clear(true, true);
+    spikes.create(400, 230, 'spikesLava');
+    spikes.create(400, 276, 'spikesLava');
+    spikes.create(400, 527, 'spikesLava');
+    
+    // Update orange texture
+    orange.children.iterate(function(child) {
+        child.setTexture('cherries');
+    });
+    
+}
+
+function spaceLevel(){
+    // Change background
+    if (this.bg) this.bg.destroy();
+    this.bg = this.add.image(400, 300, 'spaceBackground').setDepth(-1);
+
+    // Clear and reset platforms
+    platforms.clear(true, true);
+    platforms.create(400, 590, 'spacePlatform').setScale(2).refreshBody();
+    platforms.create(200, 400, 'spacePlatform').setScale(0.5).refreshBody();
+    platforms.create(660, 400, 'spacePlatform').setScale(0.5).refreshBody();
+    platforms.create(100, 250, 'spacePlatform').setScale(0.5).refreshBody();
+    platforms.create(600, 270, 'spacePlatform').setScale(0.25).refreshBody();
+    platforms.create(400, 500, 'spacePlatform').setScale(0.25).refreshBody();
+    platforms.create(400, 150, 'spacePlatform').setScale(0.25).refreshBody();
+
+    // Clear and reset spikes
+    spikes.clear(true, true);
+    spikes.create(270, 384, 'spikesSpace');
+    spikes.create(610, 258, 'spikesSpace');
+    
+    // Update orange texture
+    orange.children.iterate(function(child) {
+        child.setTexture('spaceFruit');
+    });
+
+    //change text color
+    scoreText.setStyle({fontFamily: 'gameplay, sans-serif', fontSize: '24px', fill: '#ffffff'});
+    livesText.setStyle({fontFamily: 'gameplay, sans-serif', fontSize: '24px', fill: '#ffffff'});
+    roundText.setStyle({fontFamily: 'gameplay, sans-serif', fontSize: '24px', fill: '#ffffff' }); 
+}
+
+function gameOverScene(scene) {
+    const deathScreamSound = scene.sound.add("deathScream", { loop: false });
+    deathScreamSound.play();
+
+    scene.physics.pause();
+    player.disableBody(true, true);
+    const deathSprite = scene.add.sprite(player.x, player.y, 'death');
+    player.setTint(0xff0000);
+
+    gameOverText = scene.add.text(200, 250, 'GAME OVER', {
+        fontFamily: 'gameplay, sans-serif',
+        fontSize: '64px',
+        fill: '#ff0000'
+    });
+
+    scene.add.text(250, 350, "Press 'R' or 'SPACE' to Restart", {
+    fontFamily: 'gameplay, sans-serif',
+    fontSize: '16px',
+    fill: '#ffffff'
+    });
+
+    gameOver = true;
+    // Wait before allowing restart
+    scene.time.delayedCall(1000, () => {
+        allowRestart = true;
+    });
+}
+
+</script>
+<div><p>Collect the stars, avoid the bouncing bombs and spikes, see how far you can get!</p></div>
+</body>
+</html>

@@ -63,7 +63,7 @@ var game = new Phaser.Game(config);
 function preload ()
 {
     this.load.image('sky', 'assets/sky.png');
-    this.load.image('ground', 'assets/platform.png');
+    this.load.image('ground', 'assets/platformGrass.png');
     this.load.image('star', 'assets/star.png');
     this.load.image('bomb', 'assets/bomb.png');
     this.load.image('spikes', 'assets/spikes.png');
@@ -148,13 +148,13 @@ function create ()
     bombs = this.physics.add.group();
 
     //  The score
-    scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
+    scoreText = this.add.text(16, 16, 'Score: 0', { font: 'Georgia', fontSize: '32px', fill: '#054000' });
 
     // Lives
-    livesText = this.add.text(600, 16, 'Lives: 3', { fontSize: '32px', fill: '#000'});
+    livesText = this.add.text(600, 16, 'Lives: 3', { fontSize: '32px', fill: '#054000'});
 
     //round
-    roundText = this.add.text(350, 16, 'Round: 1', { fontSize: '25px', fill: '#000' });
+    roundText = this.add.text(350, 16, 'Round: 1', { fontSize: '25px', fill: '#054000' });
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, platforms);

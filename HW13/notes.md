@@ -16,3 +16,4 @@ TODO
 - change font/text color
 - style background and platforms
 - add restart button/ "press r to restart"
+- add endless mode and levels (three levels?)
