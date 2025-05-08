@@ -11,5 +11,15 @@ Base URL for site:
 
 **Memory matching game:** https://freyaguppy.github.io/MART441-WebTech/HW6
 
+**Inspiring quotes:** https://freyaguppy.github.io/MART441-WebTech/HW8
+
+**My very first player character game:** https://freyaguppy.github.io/MART441-WebTech/HW11
+
+**Brand new game (now with beans):** https://freyaguppy.github.io/MART441-WebTech/HW12
+
+**My first Phaser game, first iteration of Snake Life:** https://freyaguppy.github.io/MART441-WebTech/HW13
+
+**Finished version of Snake Life (so many updates!):** https://freyaguppy.github.io/MART441-WebTech/FINAL
+
 
 
